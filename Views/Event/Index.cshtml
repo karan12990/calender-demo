@@ -1,0 +1,66 @@
+﻿@model IEnumerable<GoogleCalenderDemo.Utils.CalendarEvent>
+<div class="container-fluid">
+
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Google Calendar today's Events</h1>
+            </hgroup>
+            <label>Filter your events by date: </label>
+            @using (Html.BeginForm("ListEvents", "Event"))
+            {
+                <input class="" name="startDate" type="date" value="@ViewBag.StartDate"/>
+                <input class="" name="endDate" type="date" value="@ViewBag.EndDate"/>
+                <button>Get your events</button>
+            }
+        </div>
+    </section>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+
+
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

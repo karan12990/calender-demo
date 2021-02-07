@@ -11,7 +11,7 @@ namespace GoogleCalenderDemo.Models
         public int RefreshTokenId { get; set; }
 
         public string UserName { get; set; }
-        
+
         public string RefreshToken { get; set; }
     }
 }

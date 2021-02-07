@@ -1,16 +1,12 @@
-﻿
-using System;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Linq;
+﻿using System.Data.Entity.Migrations;
 
 namespace GoogleCalenderDemo.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<GoogleCalenderDemo.CalendarContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<CalendarContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
-    } 
+    }
 }

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Threading;
 using System.Web.Mvc;
+using WebMatrix.WebData;
 
 namespace GoogleCalenderDemo
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public sealed class SimpleMembershipAttribute :  ActionFilterAttribute
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    public sealed class SimpleMembershipAttribute : ActionFilterAttribute
     {
         private static SimpleMembershipInitializer _initializer;
         private static object _initializerLock = new object();
@@ -28,10 +29,14 @@ namespace GoogleCalenderDemo
                         context.Database.CreateIfNotExists();
                         context.Database.Initialize(true);
                     }
+
+                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "User", "UserId", "UserName", true);
                 }
                 catch (Exception ex)
                 {
-                    throw new InvalidOperationException("The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588", ex);
+                    throw new InvalidOperationException(
+                        "The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588",
+                        ex);
                 }
             }
         }
